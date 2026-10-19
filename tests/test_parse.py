@@ -1,4 +1,4 @@
-from src.f1.parse import parse
+from f1.parse import parse
 import pytest
 import json
 
