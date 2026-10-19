@@ -1,4 +1,3 @@
-
 def parse(data: list) -> list:
     race_result = []
     for season in data:

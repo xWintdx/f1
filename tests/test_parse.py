@@ -11,5 +11,6 @@ def data():
         season_data = json.load(f)
     return season_data
 
+
 def test_parse(data):
-    assert parse(data)[0].get("points") == '25'
+    assert parse(data)[0].get("points") == "25"
