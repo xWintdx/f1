@@ -5,7 +5,6 @@
     python app/legacy/load_results.py
 Если что-то не грузится — просто перезапустить, оно само разберётся.
 """
-
 import hashlib
 import json
 import uuid
@@ -36,20 +35,12 @@ def load():
         for race in page["MRData"]["RaceTable"]["Races"]:
             for r in race["Results"]:
                 row = (
-                    int(race["season"]),
-                    int(race["round"]),
-                    race["raceName"],
-                    race["Circuit"]["circuitName"],
-                    race["date"],
-                    int(r["position"]),
-                    float(r["points"]),
-                    r["Driver"]["driverId"],
-                    r["Constructor"]["constructorId"],
-                    int(r["grid"]),
-                    int(r["laps"]),
-                    r["status"],
-                    str(uuid.uuid4()),
-                    datetime.now(),
+                    int(race["season"]), int(race["round"]),
+                    race["raceName"], race["Circuit"]["circuitName"], race["date"],
+                    int(r["position"]), float(r["points"]),
+                    r["Driver"]["driverId"], r["Constructor"]["constructorId"],
+                    int(r["grid"]), int(r["laps"]), r["status"],
+                    str(uuid.uuid4()), datetime.now(),
                     hashlib.md5(json.dumps(r).encode()).hexdigest(),
                 )
                 try:

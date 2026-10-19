@@ -1,10 +1,13 @@
-from f1.parse import parse
-import pytest
 import json
+
+import pytest
+
+from f1.parse import parse
+
 
 @pytest.fixture
 def data():
-    with open("D:\\f1\\tests\\fixtures\\race_result.json", "r") as f:
+    with open("D:\\f1\\tests\\fixtures\\race_result.json") as f:
         season_data = json.load(f)
     return season_data
 

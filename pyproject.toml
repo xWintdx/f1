@@ -11,6 +11,12 @@ dependencies = []
 
 [tool.ruff]
 line-length = 100
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "legacy"
+]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]

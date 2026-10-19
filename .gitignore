@@ -2,3 +2,7 @@
 .venv
 .idea
 drafts
+__pycache__/
+.pyc
+.pytest_cache/
+.ruff_cache/
