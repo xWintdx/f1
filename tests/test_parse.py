@@ -1,5 +1,6 @@
 import json
-from pathlib import Path
+
+import pathlib
 
 import pytest
 
@@ -8,7 +9,7 @@ from f1.parse import parse
 
 @pytest.fixture
 def data():
-    file = Path("/f1") / "tests" / "fixtures" / "race_result.json"
+    file = pathlib.PurePath(__file__).parent / 'fixtures' / 'race_result.json'
     with open(file) as f:
         season_data = json.load(f)
     return season_data
