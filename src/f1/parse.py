@@ -1,6 +1,6 @@
-def parse(data: list) -> list:
-    race_result = []
-    for season in data:
+def parse_season_data(season_data: list[dict]) -> list[dict]:
+    race_results = []
+    for season in season_data:
         races = season.get("MRData").get("RaceTable").get("Races")
         for race in races:
             season = race.get("season")
@@ -17,7 +17,7 @@ def parse(data: list) -> list:
                 grid = result.get("grid")
                 laps = result.get("laps")
                 status = result.get("status")
-                race_result.append(
+                race_results.append(
                     {
                         "season": season,
                         "season_round": season_round,
@@ -34,4 +34,4 @@ def parse(data: list) -> list:
                         "status": status,
                     }
                 )
-    return race_result
+    return race_results
