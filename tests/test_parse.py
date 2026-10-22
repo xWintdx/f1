@@ -38,8 +38,16 @@ def test_parse(get_season_data):
         "20": "0",
     }
 
-    assert len(parse_season_data(get_season_data)) == 20
+    test_season_data = parse_season_data(get_season_data)
+
+    assert len(test_season_data) == 20
     assert {
-        race.get("position"): race.get("points") for race in parse_season_data(get_season_data)
+        race.get("position"): race.get("points") for race in test_season_data
     } == points_by_places
-    assert len(set([race.get("driver_id") for race in parse_season_data(get_season_data)])) == 20
+    assert len(set([race.get("driver_id") for race in test_season_data])) == 20
+    assert set(
+        [race.get("status") for race in test_season_data if int(race.get("points")) > 0]
+    ) == {"Finished"}
+    assert set(
+        [race.get("status") for race in test_season_data if int(race.get("points")) == 0]
+    ) == {"Finished", "Retired"}

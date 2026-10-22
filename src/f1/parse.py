@@ -3,7 +3,7 @@ def parse_season_data(season_data: list[dict]) -> list[dict]:
     for season in season_data:
         races = season.get("MRData").get("RaceTable").get("Races")
         for race in races:
-            season = race.get("season")
+            current_season = race.get("season")
             season_round = race.get("round")
             race_name = race.get("raceName")
             circuit_name = race.get("Circuit").get("circuitName")
@@ -19,7 +19,7 @@ def parse_season_data(season_data: list[dict]) -> list[dict]:
                 status = result.get("status")
                 race_results.append(
                     {
-                        "season": season,
+                        "season": current_season,
                         "season_round": season_round,
                         "race_name": race_name,
                         "circuit_name": circuit_name,
