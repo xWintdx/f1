@@ -37,7 +37,7 @@ def test_parse(get_season_data):
         "19": "0",
         "20": "0",
     }
-    driver_race_statues = {
+    driver_race_statuses = {
         "norris": "Finished",
         "max_verstappen": "Finished",
         "russell": "Finished",
