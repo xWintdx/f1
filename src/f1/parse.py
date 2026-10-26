@@ -1,8 +1,8 @@
 def parse_season_data(season_races_results: list[dict]) -> list[dict]:
     race_results = []
-    for results_by_the_specified_number_for_pagination in season_races_results:
+    for results_by_page in season_races_results:
         races = (
-            results_by_the_specified_number_for_pagination.get("MRData")
+            results_by_page.get("MRData")
             .get("RaceTable")
             .get("Races")
         )
