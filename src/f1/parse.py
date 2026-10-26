@@ -1,11 +1,7 @@
 def parse_season_data(season_races_results: list[dict]) -> list[dict]:
     race_results = []
     for results_by_page in season_races_results:
-        races = (
-            results_by_page.get("MRData")
-            .get("RaceTable")
-            .get("Races")
-        )
+        races = results_by_page.get("MRData").get("RaceTable").get("Races")
         for race in races:
             current_season = race.get("season")
             season_round = race.get("round")
