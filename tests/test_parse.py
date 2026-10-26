@@ -37,6 +37,28 @@ def test_parse(get_season_data):
         "19": "0",
         "20": "0",
     }
+    driver_race_statues = {
+        "norris": "Finished",
+        "max_verstappen": "Finished",
+        "russell": "Finished",
+        "antonelli": "Finished",
+        "albon": "Finished",
+        "stroll": "Finished",
+        "hulkenberg": "Finished",
+        "leclerc": "Finished",
+        "piastri": "Finished",
+        "hamilton": "Finished",
+        "gasly": "Finished",
+        "tsunoda": "Finished",
+        "ocon": "Finished",
+        "bearman": "Finished",
+        "lawson": "Retired",
+        "bortoleto": "Retired",
+        "alonso": "Retired",
+        "sainz": "Retired",
+        "doohan": "Retired",
+        "hadjar": "Retired",
+    }
 
     test_season_data = parse_season_data(get_season_data)
 
@@ -44,6 +66,9 @@ def test_parse(get_season_data):
     assert {
         race.get("position"): race.get("points") for race in test_season_data
     } == points_by_places
+    assert {
+        race.get("driver_id"): race.get("status") for race in test_season_data
+    } == driver_race_statues
     assert len(set([race.get("driver_id") for race in test_season_data])) == 20
     assert set(
         [race.get("status") for race in test_season_data if int(race.get("points")) > 0]
