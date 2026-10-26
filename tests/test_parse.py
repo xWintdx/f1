@@ -37,9 +37,53 @@ def test_parse(get_season_data):
         "19": "0",
         "20": "0",
     }
+    driver_race_statuses = {
+        "norris": "Finished",
+        "max_verstappen": "Finished",
+        "russell": "Finished",
+        "antonelli": "Finished",
+        "albon": "Finished",
+        "stroll": "Finished",
+        "hulkenberg": "Finished",
+        "leclerc": "Finished",
+        "piastri": "Finished",
+        "hamilton": "Finished",
+        "gasly": "Finished",
+        "tsunoda": "Finished",
+        "ocon": "Finished",
+        "bearman": "Finished",
+        "lawson": "Retired",
+        "bortoleto": "Retired",
+        "alonso": "Retired",
+        "sainz": "Retired",
+        "doohan": "Retired",
+        "hadjar": "Retired",
+    }
 
-    assert len(parse_season_data(get_season_data)) == 20
+    test_season_data = parse_season_data(get_season_data)
+
+    # Проверяем, что длина фрейма соответствует ожидаемой
+    assert len(test_season_data) == 20
+
+    # Проверяем, что позиции соответствуют очкам
     assert {
-        race.get("position"): race.get("points") for race in parse_season_data(get_season_data)
+        race.get("position"): race.get("points") for race in test_season_data
     } == points_by_places
-    assert len(set([race.get("driver_id") for race in parse_season_data(get_season_data)])) == 20
+
+    # Проверяем, что пилоты соответствуют фактическим статусам
+    assert {
+        race.get("driver_id"): race.get("status") for race in test_season_data
+    } == driver_race_statuses
+
+    # Проверяем, что количество уникальных пилотов - 20
+    assert len(set([race.get("driver_id") for race in test_season_data])) == 20
+
+    # Проверяем допустимые статусы у гонщиков, которые заработали очки
+    assert set(
+        [race.get("status") for race in test_season_data if int(race.get("points")) > 0]
+    ) == {"Finished"}
+
+    # Проверяем допустимые статусы у гонщиков, которые не заработали очки
+    assert set(
+        [race.get("status") for race in test_season_data if int(race.get("points")) == 0]
+    ) == {"Finished", "Retired"}
