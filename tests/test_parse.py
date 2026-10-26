@@ -73,7 +73,7 @@ def test_parse(get_season_data):
     # Проверяем, что пилоты соответствуют фактическим статусам
     assert {
         race.get("driver_id"): race.get("status") for race in test_season_data
-    } == driver_race_statues
+    } == driver_race_statuses
 
     # Проверяем, что количество уникальных пилотов - 20
     assert len(set([race.get("driver_id") for race in test_season_data])) == 20
