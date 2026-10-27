@@ -32,5 +32,6 @@ build-backend = "uv_build"
 dev = [
     "jupyterlab>=4.6.4",
     "pytest>=9.1.1",
+    "requests>=2.34.2",
     "ruff>=0.17.0",
 ]
