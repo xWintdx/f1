@@ -1,9 +1,9 @@
 import json
 import pathlib
 
-import pytest
-
 from f1.parse import parse_season_data
+
+import pytest
 
 
 @pytest.fixture
