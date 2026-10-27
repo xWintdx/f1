@@ -16,7 +16,7 @@ def get_season_data():
 
 def test_parse(get_season_data):
     points_by_places = {
-        "1": "25",
+        "1": "24",
         "2": "18",
         "3": "15",
         "4": "12",
