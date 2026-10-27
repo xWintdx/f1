@@ -1,9 +1,9 @@
 import json
 import pathlib
 
-from f1.parse import parse_season_data
-
 import pytest
+
+from f1.parse import parse_season_data
 
 
 @pytest.fixture
@@ -16,7 +16,9 @@ def get_season_data():
 
 def test_parse(get_season_data):
     points_by_places = {
-        "1": "25","2": "18","3": "15",
+        "1": "25",
+        "2": "18",
+        "3": "15",
         "4": "12",
         "5": "10",
         "6": "8",
