@@ -23,3 +23,17 @@ uv sync
 ```bash
 uv run pytest
 ```
+
+### Переименовать  файл .env.template в env 
+В файле указать своего креды для подключения к БД
+
+### Выполнить команду
+```bash
+docker compose up -d
+```
+### Подключиться к БД и проверить данные
+```bash
+select count(*) from orders # 830
+select count(*) from customers # 91
+select version() # Версия начинается с PostgreSQL 17
+```
