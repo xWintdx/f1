@@ -33,7 +33,12 @@ docker compose up -d
 ```
 ### Подключиться к БД и проверить данные
 ```bash
+postgresql://пользователь:пароль@хост:порт/база
 select count(*) from orders # 830
 select count(*) from customers # 91
 select version() # Версия начинается с PostgreSQL 17
+```
+### Для сброса данных использовать 
+```bash
+docker compose down -v
 ```
