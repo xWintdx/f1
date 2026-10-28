@@ -24,19 +24,23 @@ uv sync
 uv run pytest
 ```
 
-### Переименовать  файл .env.template в env 
-В файле указать своего креды для подключения к БД
+### Подготовить файл .env
+1) Скопировать существующий файл .env.template
+2) Изменить имя (Удалить .template)
+3) В файле указать своего креды для подключения к БД
 
 ### Выполнить команду
 ```bash
 docker compose up -d
 ```
 ### Подключиться к БД и проверить данные
-```bash
-postgresql://пользователь:пароль@хост:порт/база
-select count(*) from orders # 830
-select count(*) from customers # 91
-select version() # Версия начинается с PostgreSQL 17
+```psql
+postgresql://пользователь:пароль@localhost:5432/база
+```
+```sql
+select count(*) from orders; -- 830
+select count(*) from customers; -- 91
+select version(); -- Версия начинается с PostgreSQL 17
 ```
 ### Для сброса данных использовать 
 ```bash
